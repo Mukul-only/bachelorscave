@@ -1,0 +1,9 @@
+.active p {
+  @apply scale-110 font-semibold;
+}
+.active span {
+  @apply scale-100;
+}
+.underline {
+  @apply block origin-center  h-[2px] bg-darkBlue scale-0 mx-1  duration-200 mt-1;
+}
