@@ -20,7 +20,7 @@ const WhyUsSection = (props) => {
       <Card className="flex flex-col xl:flex-row justify-between mt-36 py-16 items-center space-y-12 xl:space-y-0">
         <div className="space-y-4 text-center xl:text-left">
           <h1 className="text-2xl md:text-4xl">
-            What makes us <sapn className="text-orangeY">DIFFERENT</sapn>
+            What makes us <span className="text-orangeY">DIFFERENT</span>
           </h1>
           <p className="max-w-lg text-sm md:text-base">
             Bachelors Cave is all you need to find perfect house for you without

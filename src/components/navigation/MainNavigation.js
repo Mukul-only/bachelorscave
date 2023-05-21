@@ -1,35 +1,62 @@
 import NavigationLink from "./NavigationLink";
 import Card from "../../UI/Card";
-import brandlogo from "../../assets/brandlogo.svg";
+import brandlogo from "../../assets/brand/deal.svg";
 import Button from "../../UI/Button";
+import Hamburger from "../../UI/Hamburger";
+
+import MobileMenu from "./MobileMenu";
+export const Brand = (props) => (
+  <div className="flex space-x-2 items-center">
+    <img src={brandlogo} alt="brand" className=" w-16 md:w-12" />
+    <h1
+      className={`text-xl md:text-2xl ${
+        props.className ? props.className : ""
+      }`}
+    >
+      Bachelors Cave
+    </h1>
+  </div>
+);
+
+export const UserBtn = (props) => {
+  return (
+    <div
+      className={` items-center space-x-3 ${
+        props.className ? props.className : ""
+      }`}
+    >
+      <Button className="w-28 py-2 hover:bg-darkBlue duration-300 hover:text-white font-semibold">
+        Login
+      </Button>
+      <Button className="w-28 py-2 hover:bg-darkBlue duration-300 hover:text-white font-semibold">
+        Signup
+      </Button>
+    </div>
+  );
+};
 
 const MainNavigation = (props) => {
   return (
-    <div className="relative z-10 shadow-lg">
-      <Card className="flex justify-between py-3">
-        <div className="flex space-x-2 items-center">
-          <img src={brandlogo} alt="brand" className=" w-8 md:w-12" />
-          <h1 className=" text-xl md:text-2xl">Bachelors Cave</h1>
-        </div>
-        <div className="xl:flex space-x-6 items-center hidden">
-          <NavigationLink to="/" title="Home" />
-          {/* <NavigationLink to="/listproperty" title="List Property" /> */}
-          <NavigationLink to="/help" title="Help" />
-          <NavigationLink to="/aboutus" title="About Us" />
-        </div>
-        <div className="hidden xl:flex items-center space-x-3 ">
-          <Button className="px-6 py-2 text-semibold  bg-deepBlue text-white hover:bg-opacity-90">
-            List property
-          </Button>
-          <Button className="w-28 py-2 hover:bg-darkBlue duration-300 hover:text-white font-semibold">
-            Login
-          </Button>
-          <Button className="w-28 py-2 hover:bg-darkBlue duration-300 hover:text-white font-semibold">
-            Signup
-          </Button>
-        </div>
-      </Card>
-    </div>
+    <>
+      <div className="relative z-10 shadow-lg bg-white">
+        <Card className="flex justify-between xl:py-3">
+          <Brand className="hidden md:block" />
+          <div className="xl:flex space-x-6 items-center hidden">
+            <NavigationLink to="/" title="Home" />
+            <NavigationLink to="/help" title="Help" />
+            <NavigationLink to="/aboutus" title="About Us" />
+          </div>
+          <div className="flex space-x-2 items-center">
+            <button className="px-4 text-sm md:text-base rounded-full py-1 h-max text-semibold bg-deepBlue text-white  hover:bg-opacity-90">
+              List property
+            </button>
+            <UserBtn className="hidden xl:flex" />
+            <Hamburger className="flex xl:hidden cursor-pointer" />
+          </div>
+        </Card>
+      </div>
+      <MobileMenu />
+    </>
   );
 };
 export default MainNavigation;

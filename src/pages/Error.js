@@ -1,6 +1,7 @@
 import Card from "../UI/Card";
 import { Link } from "react-router-dom";
 import MainNavigation from "../components/navigation/MainNavigation";
+import MainFooter from "../components/footer/MainFooter";
 
 const ErrorPage = (props) => {
   return (
@@ -23,6 +24,7 @@ const ErrorPage = (props) => {
           Go to home
         </Link>
       </Card>
+      <MainFooter />
     </div>
   );
 };

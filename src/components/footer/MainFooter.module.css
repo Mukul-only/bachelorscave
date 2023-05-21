@@ -1,0 +1,12 @@
+.footer div {
+  @apply py-4 md:py-8;
+}
+.footer h1 {
+  @apply text-2xl py-4 text-white;
+}
+.footer p {
+  @apply text-lg;
+}
+.footer div:nth-child(3) {
+  @apply px-4 md:bg-[#010B13];
+}
