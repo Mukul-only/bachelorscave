@@ -4,25 +4,26 @@ import { uiActions } from "../../store/ui-slice";
 import { useRef, useEffect, useState } from "react";
 import Card from "../../UI/Card";
 import { UserBtn } from "./MainNavigation";
+
 const MobileMenu = (props) => {
   const dispatch = useDispatch();
   const { mobileNavVisible } = useSelector((state) => state.ui);
-  const [h, setH] = useState("");
-  const mobileMenuRef = useRef();
+  // const [h, setH] = useState("");
+  // const mobileMenuRef = useRef();
 
   const pageChagneHandler = () => {
     dispatch(uiActions.toogle());
   };
 
-  useEffect(() => {
-    setH("h-[" + mobileMenuRef.current.scrollHeight + "px]");
-  }, []);
+  // useEffect(() => {
+  //   setH("h-[" + mobileMenuRef.current.scrollHeight + "px]");
+  // }, []);
+
   return (
     <div
-      className={`block xl:hidden bg-white overflow-hidden  ${
-        mobileNavVisible ? h : "h-0"
-      } duration-300`}
-      ref={mobileMenuRef}
+      className={` xl:hidden bg-white  overflow-hidden  ${
+        mobileNavVisible ? "h-[241px]" : "h-0 "
+      } duration-500 ease-in-out`}
     >
       <Card className="flex flex-col py-6 space-y-2">
         <NavLink
