@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @font-face {
   font-family: "bebas_neueregular";
   src: url("./font/bebasneue-regular-webfont.woff2") format("woff2"),

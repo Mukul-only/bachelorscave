@@ -7,7 +7,7 @@ import Hamburger from "../../UI/Hamburger";
 import MobileMenu from "./MobileMenu";
 export const Brand = (props) => (
   <div className="flex space-x-2 items-center">
-    <img src={brandlogo} alt="brand" className=" w-16 md:w-12" />
+    <img src={brandlogo} alt="brand" className=" w-14 md:w-12" />
     <h1
       className={`text-xl md:text-2xl ${
         props.className ? props.className : ""

@@ -19,7 +19,7 @@ const MobileMenu = (props) => {
   }, []);
   return (
     <div
-      className={`xl:hidden bg-white overflow-hidden  ${
+      className={`block xl:hidden bg-white overflow-hidden  ${
         mobileNavVisible ? h : "h-0"
       } duration-300`}
       ref={mobileMenuRef}
