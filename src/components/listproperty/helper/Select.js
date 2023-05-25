@@ -61,7 +61,7 @@ const Select = ({ id, label, options, className }) => {
         {options.map((item) => (
           <li
             className={`px-2 py-1 md:px-4 md:py-2 text-sm md:text-base${
-              item === value ? "bg-gray-200" : "hover:bg-gray-100"
+              item === value ? " bg-gray-200" : " hover:bg-gray-100"
             } `}
             key={item}
             onClick={() => {
