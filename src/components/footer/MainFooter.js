@@ -6,7 +6,7 @@ const MainFooter = (props) => {
     <>
       <section id="footer" className="bg-deepBlue text-white">
         <Card
-          className={`flex flex-col md:flex-row items-center text-center  md:text-left justify-between md:space-x-4 ${classes.footer}`}
+          className={`flex flex-col md:flex-row items-center md:items-stretch text-center  md:text-left justify-between md:space-x-4 ${classes.footer}`}
         >
           <div>
             <Brand className="block" />

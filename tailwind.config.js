@@ -9,6 +9,7 @@ module.exports = {
         cyanY: "#48cae4",
         deepBlue: "#14213d",
         orangeY: "#FF4F00",
+        ghostWhite: "#F8F8FF",
       },
       maxWidth: {
         "8xl": "86rem",

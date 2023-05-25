@@ -3,7 +3,7 @@ import Card from "../../UI/Card";
 import brandlogo from "../../assets/brand/deal.svg";
 import Button from "../../UI/Button";
 import Hamburger from "../../UI/Hamburger";
-
+import { Link } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 export const Brand = (props) => (
   <div className="flex space-x-2 items-center">
@@ -47,9 +47,11 @@ const MainNavigation = (props) => {
             <NavigationLink to="/aboutus" title="About Us" />
           </div>
           <div className="flex space-x-2 items-center">
-            <button className="px-4 text-sm md:text-base rounded-full py-1 h-max text-semibold bg-deepBlue text-white  hover:bg-opacity-90">
-              List property
-            </button>
+            <Link to="/listproperty">
+              <button className="px-4 text-sm md:text-base rounded-full py-1 h-max text-semibold bg-deepBlue text-white  hover:bg-opacity-90">
+                List property
+              </button>
+            </Link>
             <UserBtn className="hidden xl:flex" />
             <Hamburger className="flex xl:hidden cursor-pointer" />
           </div>

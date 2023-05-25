@@ -1,0 +1,19 @@
+.gradeint {
+  background-image: url(".../../../../assets/gradient_2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.active div,
+.active div:hover {
+  @apply bg-white bg-opacity-30;
+}
+.active img {
+  @apply w-8;
+}
+.active p {
+  @apply text-xl font-semibold;
+}
+.hov:hover {
+  @apply bg-white bg-opacity-20;
+}

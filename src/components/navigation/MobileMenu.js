@@ -1,67 +1,71 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
-import { useRef, useEffect, useState } from "react";
+
 import Card from "../../UI/Card";
 import { UserBtn } from "./MainNavigation";
+import AnimateHeight from "react-animate-height";
+
+const MobileNavItem = (props) => {
+  return (
+    <NavLink
+      to={props.to}
+      className={({ isActive }) => (isActive ? "font-semibold text-lg" : "")}
+      end
+      onClick={props.onClick}
+    >
+      <div className="flex space-x-2 items-center">
+        <img src={props.src} className="w-6" />
+        <p>{props.title}</p>
+      </div>
+    </NavLink>
+  );
+};
 
 const MobileMenu = (props) => {
   const dispatch = useDispatch();
   const { mobileNavVisible } = useSelector((state) => state.ui);
-  // const [h, setH] = useState("");
-  // const mobileMenuRef = useRef();
 
   const pageChagneHandler = () => {
     dispatch(uiActions.toogle());
   };
 
-  // useEffect(() => {
-  //   setH("h-[" + mobileMenuRef.current.scrollHeight + "px]");
-  // }, []);
+  const height = mobileNavVisible ? "auto" : 0;
 
   return (
-    <div
-      className={` xl:hidden bg-white  overflow-hidden  ${
-        mobileNavVisible ? "h-[241px]" : "h-0 "
-      } duration-500 ease-in-out`}
+    <AnimateHeight
+      height={height}
+      duration={400}
+      easing="ease-in-out"
+      className={` xl:hidden bg-white`}
     >
       <Card className="flex flex-col py-6 space-y-2">
-        <NavLink
+        <MobileNavItem
           to="/"
-          className={({ isActive }) =>
-            isActive ? "font-semibold text-lg" : ""
-          }
-          end
           onClick={pageChagneHandler}
-        >
-          Home
-        </NavLink>
+          src={require("../../assets/home.png")}
+          title="Home"
+        />
         <hr className="w-full border-t border-stone-200" />
-        <NavLink
+        <MobileNavItem
           to="/help"
-          className={({ isActive }) =>
-            isActive ? "font-semibold text-lg" : ""
-          }
-          end
           onClick={pageChagneHandler}
-        >
-          Help
-        </NavLink>
+          src={require("../../assets/support.png")}
+          title="Help"
+        />
+
         <hr className="w-full border-t border-stone-200" />
-        <NavLink
+        <MobileNavItem
           to="/aboutus"
-          className={({ isActive }) =>
-            isActive ? "font-semibold text-lg" : ""
-          }
-          end
           onClick={pageChagneHandler}
-        >
-          About Us
-        </NavLink>
+          src={require("../../assets/about.png")}
+          title="About Us"
+        />
+
         <hr className="w-full border-t border-stone-200" />
         <UserBtn className="flex justify-center pt-6" />
       </Card>
-    </div>
+    </AnimateHeight>
   );
 };
 export default MobileMenu;
