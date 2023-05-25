@@ -26,7 +26,7 @@ const MobileMenu = (props) => {
   const dispatch = useDispatch();
   const { mobileNavVisible } = useSelector((state) => state.ui);
 
-  const pageChagneHandler = () => {
+  const pageChangeHandler = () => {
     dispatch(uiActions.toogle());
   };
 
@@ -42,14 +42,14 @@ const MobileMenu = (props) => {
       <Card className="flex flex-col py-6 space-y-2">
         <MobileNavItem
           to="/"
-          onClick={pageChagneHandler}
+          onClick={pageChangeHandler}
           src={require("../../assets/home.png")}
           title="Home"
         />
         <hr className="w-full border-t border-stone-200" />
         <MobileNavItem
           to="/help"
-          onClick={pageChagneHandler}
+          onClick={pageChangeHandler}
           src={require("../../assets/support.png")}
           title="Help"
         />
@@ -57,7 +57,7 @@ const MobileMenu = (props) => {
         <hr className="w-full border-t border-stone-200" />
         <MobileNavItem
           to="/aboutus"
-          onClick={pageChagneHandler}
+          onClick={pageChangeHandler}
           src={require("../../assets/about.png")}
           title="About Us"
         />

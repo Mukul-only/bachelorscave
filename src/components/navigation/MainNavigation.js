@@ -4,6 +4,8 @@ import brandlogo from "../../assets/brand/deal.svg";
 import Button from "../../UI/Button";
 import Hamburger from "../../UI/Hamburger";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../store/ui-slice";
 import MobileMenu from "./MobileMenu";
 export const Brand = (props) => (
   <div className="flex space-x-2 items-center">
@@ -36,6 +38,10 @@ export const UserBtn = (props) => {
 };
 
 const MainNavigation = (props) => {
+  const dispatch = useDispatch();
+  const pageChangeHandler = () => {
+    dispatch(uiActions.toogle(0));
+  };
   return (
     <>
       <div className="relative z-10 shadow-lg bg-white">
@@ -47,7 +53,7 @@ const MainNavigation = (props) => {
             <NavigationLink to="/aboutus" title="About Us" />
           </div>
           <div className="flex space-x-2 items-center">
-            <Link to="/listproperty">
+            <Link to="/listproperty" onClick={pageChangeHandler}>
               <button className="px-4 text-sm md:text-base rounded-full py-1 h-max text-semibold bg-deepBlue text-white  hover:bg-opacity-90">
                 List property
               </button>
