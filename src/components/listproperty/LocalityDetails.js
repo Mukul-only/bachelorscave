@@ -35,7 +35,7 @@ const getCity = (response) => {
 };
 
 const LocalityDetails = (props) => {
-  Geocode.setApiKey("AIzaSyDiMoQSvNkB59u1l77C402GyY_87w23DzE");
+  Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
   Geocode.setLanguage("en");
   Geocode.setLocationType("ROOFTOP");
   const [autocomplete, setAutocomplete] = useState(null);
@@ -45,7 +45,7 @@ const LocalityDetails = (props) => {
   const [error, setError] = useState({ id: false, msg: "" });
   const libraries = useMemo(() => ["places"], []);
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyDiMoQSvNkB59u1l77C402GyY_87w23DzE",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: libraries,
   });
   const [changedByInput, setChangedByInput] = useState(false);
