@@ -59,7 +59,6 @@ const useBuildAreaValidation = (vlaue) => {
       }
     } else if (existingItem) {
       if (val >= existingItem.from && val <= existingItem.to) {
-        console.log(val);
         return {
           valid: true,
           errMsg: "",

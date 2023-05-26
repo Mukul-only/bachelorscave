@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import Error from "./pages/Error";
 import ListPropertyPage from "./pages/ListPropertyPage";
 import PropertyDetails from "./components/listproperty/PropertyDetails";
+import LocalityDetails from "./components/listproperty/LocalityDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         element: <ListPropertyPage />,
         children: [
           { index: true, element: <PropertyDetails /> },
-          { path: "localitydetails", element: <p>locality</p> },
+          { path: "localitydetails", element: <LocalityDetails /> },
           { path: "rentaldetails", element: <p>rental</p> },
           { path: "amenities", element: <p>amenities</p> },
           { path: "gallery", element: <p>gallery</p> },

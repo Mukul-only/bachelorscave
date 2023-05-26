@@ -3,13 +3,19 @@ import classes from "./Select.module.css";
 import React, { useState, useEffect } from "react";
 import { validationActions } from "../../../store/validation-slice";
 import { propertydataActions } from "../../../store/propertydata-slice";
-const Select = ({ id, label, options, className }) => {
+const Select = ({ id, label, options, className, selected }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("select");
   const { isTouched } = useSelector((state) => state.validation);
   const isValid = value !== "select";
   const hasError = isTouched && !isValid;
+
+  useEffect(() => {
+    if (selected) {
+      setValue(selected);
+    }
+  }, [setValue, selected]);
 
   const openDropDownHandler = () => {
     setIsOpen((prev) => !prev);

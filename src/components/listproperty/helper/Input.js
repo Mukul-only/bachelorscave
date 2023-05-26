@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { validationActions } from "../../../store/validation-slice";
 import { useEffect } from "react";
 import { propertydataActions } from "../../../store/propertydata-slice";
-const Input = ({ id, label, input, validation, className, errMsg }) => {
+const Input = ({ id, label, input, validation, className, errMsg, val }) => {
   const dispatch = useDispatch();
   const { isTouched } = useSelector((state) => state.validation);
   const {
@@ -11,10 +11,18 @@ const Input = ({ id, label, input, validation, className, errMsg }) => {
     isValid,
     hasError,
     setIsTouched,
+    setInput,
     inputChangeHandler,
     inputBlurHandler,
     reset,
   } = useInput((value) => validation(value));
+
+  useEffect(() => {
+    if (val) {
+      setInput(val);
+    }
+  }, [val, setInput]);
+
   useEffect(() => {
     dispatch(
       validationActions.setFeildValidity({ id: label, isValid: isValid })

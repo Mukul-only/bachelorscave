@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { validationActions } from "../../store/validation-slice";
 import Input from "./helper/Input";
 import useBuildAreaValidation from "./helper/use-BuildAreaValidation";
-import { uiActions } from "../../store/ui-slice";
+
 const PropertyDetails = (props) => {
   const dispatch = useDispatch();
 
