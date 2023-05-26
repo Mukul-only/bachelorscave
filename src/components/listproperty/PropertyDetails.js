@@ -16,7 +16,7 @@ const PropertyDetails = (props) => {
     (state) => state.propertydata.propertydata["Property details"].Floor
   );
   const totalFloorValidation = (value) => {
-    return parseInt(value.trim()) < 99 && parseInt(value.trim()) > 0;
+    return parseInt(value.trim()) <= 99 && parseInt(value.trim()) >= 0;
   };
   const floorValidation = (value) => {
     const val = parseInt(value.trim());
