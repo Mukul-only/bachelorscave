@@ -5,6 +5,7 @@ const validationSlice = createSlice({
   initialState: {
     current: 0,
     next: "/listproperty",
+    prev: "/listproperty",
     isTouched: false,
     feildValidity: [],
     isSectionValid: {
@@ -54,6 +55,9 @@ const validationSlice = createSlice({
     },
     setNext(state, action) {
       state.next = action.payload;
+    },
+    setPrev(state, action) {
+      state.prev = action.payload;
     },
     reset(state) {
       state.isTouched = false;

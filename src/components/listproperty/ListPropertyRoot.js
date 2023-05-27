@@ -10,7 +10,12 @@ const ListPropNavLink = (props) => {
   const navigateClickHandler = (e) => {
     dispatch(validationActions.setIsTouched());
     if (!isFormValid) {
-      e.preventDefault();
+      if (props.id > current) {
+        e.preventDefault();
+      } else {
+        dispatch(validationActions.setSectionValidity(current));
+        dispatch(validationActions.reset());
+      }
     } else {
       dispatch(validationActions.setSectionValidity(current));
       dispatch(validationActions.reset());
@@ -36,17 +41,22 @@ const ListPropNavLink = (props) => {
 
 const ListPropertyRoot = (props) => {
   const dispatch = useDispatch();
-  const { isFormValid, current, next } = useSelector(
+  const { isFormValid, current, next, prev } = useSelector(
     (state) => state.validation
   );
   const navigate = useNavigate();
-  const clickHandler = () => {
+  const goToNextHandler = () => {
     dispatch(validationActions.setIsTouched());
     if (isFormValid) {
       navigate(next);
       dispatch(validationActions.setSectionValidity(current));
       dispatch(validationActions.reset());
     }
+  };
+  const goToPrevHandler = () => {
+    navigate(prev);
+    dispatch(validationActions.setSectionValidity(current));
+    dispatch(validationActions.reset());
   };
   return (
     <>
@@ -55,31 +65,37 @@ const ListPropertyRoot = (props) => {
           className={`hidden rounded-l-xl md:block py-12 px-4 ${classes.gradeint} text-white`}
         >
           <ListPropNavLink
+            id={0}
             to="/listproperty"
             title="Property details"
             src={require("../../assets/listprop/home_.png")}
           />
           <ListPropNavLink
+            id={1}
             to="/listproperty/localitydetails"
             title="Locality details"
             src={require("../../assets/listprop/location.png")}
           />
           <ListPropNavLink
+            id={2}
             to="/listproperty/rentaldetails"
             title="Rental details"
             src={require("../../assets/listprop/buildings.png")}
           />
           <ListPropNavLink
+            id={3}
             to="/listproperty/amenities"
             title="Amenities"
             src={require("../../assets/listprop/amenities.png")}
           />
           <ListPropNavLink
+            id={4}
             to="/listproperty/gallery"
             title="Gallery"
             src={require("../../assets/listprop/gallery.png")}
           />
           <ListPropNavLink
+            id={5}
             to="/listproperty/schedule"
             title="Schedule"
             src={require("../../assets/listprop/schedule.png")}
@@ -89,12 +105,24 @@ const ListPropertyRoot = (props) => {
           <props.Outlet />
         </div>
       </Card>
-      <Button
-        className="block bg-deepBlue mx-auto text-white p-3 my-12"
-        onClick={clickHandler}
-      >
-        Save & Continue
-      </Button>
+      <div className="mx-auto w-max space-x-4 text-sm md:text-base">
+        {current !== 0 && (
+          <Button
+            className="w-32 py-2 md:py-3 hover:bg-deepBlue hover:text-white duration-300 "
+            onClick={goToPrevHandler}
+          >
+            Back
+          </Button>
+        )}
+        {current !== 5 && (
+          <Button
+            className=" bg-deepBlue text-white  p-2 md:p-3  my-12 hover:bg-opacity-90"
+            onClick={goToNextHandler}
+          >
+            Save & Continue
+          </Button>
+        )}
+      </div>
     </>
   );
 };

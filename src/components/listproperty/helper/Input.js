@@ -17,6 +17,15 @@ const Input = ({ id, label, input, validation, className, errMsg, val }) => {
     reset,
   } = useInput((value) => validation(value));
 
+  const preValue = useSelector(
+    (state) => state.propertydata.propertydata[id][label]
+  );
+  useEffect(() => {
+    if (preValue) {
+      setInput(preValue);
+    }
+  }, [setInput]);
+
   useEffect(() => {
     if (val) {
       setInput(val);

@@ -10,7 +10,14 @@ const Select = ({ id, label, options, className, selected }) => {
   const { isTouched } = useSelector((state) => state.validation);
   const isValid = value !== "select";
   const hasError = isTouched && !isValid;
-
+  const preValue = useSelector(
+    (state) => state.propertydata.propertydata[id][label]
+  );
+  useEffect(() => {
+    if (preValue) {
+      setValue(preValue);
+    }
+  }, [setValue]);
   useEffect(() => {
     if (selected) {
       setValue(selected);

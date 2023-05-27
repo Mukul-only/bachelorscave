@@ -58,6 +58,7 @@ const LocalityDetails = (props) => {
   useEffect(() => {
     dispatch(validationActions.setCurrent(1));
     dispatch(validationActions.setNext("/listproperty/rentaldetails"));
+    dispatch(validationActions.setPrev("/listproperty"));
   }, [dispatch]);
 
   const markerDragEndHandler = (e) => {
