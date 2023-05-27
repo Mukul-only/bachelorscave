@@ -62,7 +62,7 @@ const ListPropertyRoot = (props) => {
     <>
       <Card className="flex rounded-xl   shadow-lg  border ">
         <div
-          className={`hidden rounded-l-xl md:block py-12 px-4 ${classes.gradeint} text-white`}
+          className={`hidden rounded-l-xl md:block py-12 md:px-2 xl:px-4 ${classes.gradeint} text-white`}
         >
           <ListPropNavLink
             id={0}
@@ -101,7 +101,7 @@ const ListPropertyRoot = (props) => {
             src={require("../../assets/listprop/schedule.png")}
           />
         </div>
-        <div className="flex-1 rounded-l-3xl md:-ml-4 bg-white p-6 md:p-10 rounded-r-xl ">
+        <div className="flex-1 rounded-l-3xl md:-ml-4 bg-white p-6 md:p-7 xl:p-10 rounded-r-xl ">
           <props.Outlet />
         </div>
       </Card>

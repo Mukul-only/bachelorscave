@@ -193,7 +193,7 @@ const LocalityDetails = (props) => {
   return (
     <>
       <h1 className="text-lg md:text-xl font-semibold text-darkBlue">
-        Locality
+        Locality Details
       </h1>
       <hr className="border-t my-2 border-gray-300" />
       <div className="flex flex-col md:flex-row  space-y-4 md:space-y-0 md:space-x-6 mt-8">

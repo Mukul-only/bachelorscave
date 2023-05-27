@@ -6,6 +6,7 @@ import Error from "./pages/Error";
 import ListPropertyPage from "./pages/ListPropertyPage";
 import PropertyDetails from "./components/listproperty/PropertyDetails";
 import LocalityDetails from "./components/listproperty/LocalityDetails";
+import RentalDetails from "./components/listproperty/RentalDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,10 +20,9 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <PropertyDetails /> },
           { path: "localitydetails", element: <LocalityDetails /> },
-          { path: "rentaldetails", element: <p>rental</p> },
+          { path: "rentaldetails", element: <RentalDetails /> },
           { path: "amenities", element: <p>amenities</p> },
           { path: "gallery", element: <p>gallery</p> },
-          { path: "schedule", element: <p>schedule</p> },
           { path: "schedule", element: <p>schedule</p> },
         ],
       },
