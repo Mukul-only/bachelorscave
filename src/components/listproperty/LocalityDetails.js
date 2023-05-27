@@ -140,6 +140,20 @@ const LocalityDetails = (props) => {
       );
     }
   }, [changedByInput, locality]);
+  useEffect(() => {
+    if (locality) {
+      Geocode.fromAddress(locality).then(
+        (response) => {
+          const { lat, lng } = response.results[0].geometry.location;
+
+          setLatLan({ lat: lat, lng: lng });
+        },
+        (error) => {
+          // console.error(error);
+        }
+      );
+    }
+  }, []);
 
   const placeChangeHandler = () => {
     if (autocomplete !== null) {
