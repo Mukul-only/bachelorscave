@@ -24,9 +24,7 @@ const Select = ({ id, label, options, className, selected }) => {
     setValue(item);
   };
   const selectBlurHandler = () => {
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 150);
+    setIsOpen(false);
   };
   useEffect(() => {
     dispatch(
@@ -43,15 +41,15 @@ const Select = ({ id, label, options, className, selected }) => {
       className={`relative ${className ? className : ""} cursor-pointer ${
         classes["prevent-select"]
       }`}
+      tabIndex={0}
+      onBlur={selectBlurHandler}
     >
       <p className="font-[500] text-sm md:text-base">{label}</p>
       <div
         className={`flex space-x-2 justify-between mt-2 items-center px-2 py-1 md:px-4 md:py-2 rounded-lg  border ${
           hasError ? "bg-red-50 border-red-500" : "bg-gray-50"
         } text-sm md:text-base`}
-        tabIndex={0}
         onClick={openDropDownHandler}
-        onBlur={selectBlurHandler}
       >
         <p>{value}</p>
         <img
@@ -72,6 +70,7 @@ const Select = ({ id, label, options, className, selected }) => {
             key={item}
             onClick={() => {
               valueChangeHandler(item);
+              setIsOpen(false);
             }}
           >
             {item}
