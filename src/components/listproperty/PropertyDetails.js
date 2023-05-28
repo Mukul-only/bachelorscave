@@ -127,12 +127,13 @@ const PropertyDetails = (props) => {
           min: "1",
           placeholder: "area sqft.",
         }}
-        className="w-full md:w-1/3 mt-4"
-        label="Built up area in sq.ft"
+        className="w-full xl:w-1/3 mt-4"
+        label="Built up area"
         validation={(value) => {
           return BuildValidation(value);
         }}
         errMsg={er}
+        icon={{ right: "sq.ft" }}
       />
     </>
   );

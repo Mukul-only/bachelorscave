@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Select from "./helper/Select";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { validationActions } from "../../store/validation-slice";
 import Input from "./helper/Input";
 
 import Checkbox from "./helper/Checkbox";
 import Textarea from "./helper/Textarea";
-import { propertydataActions } from "../../store/propertydata-slice";
+
 import Switch from "./helper/Switch";
 const Amenities = (props) => {
   const dispatch = useDispatch();

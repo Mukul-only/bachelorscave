@@ -93,7 +93,7 @@ const RentalDetails = (props) => {
               ? ""
               : "Rent is required!"
           }`}
-          icon={{ left: "₹", right: "/ Month" }}
+          icon={{ left: "₹", right: "/month" }}
         />
         <Input
           id="Rental details"

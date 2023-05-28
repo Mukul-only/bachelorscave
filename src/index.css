@@ -41,3 +41,23 @@ h1 {
     #1b1b1b2a
   );
 }
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #4776e6 0%,
+    #8e54e9 51%,
+    #4776e6 100%
+  );
+
+  transition: 700ms;
+  background-size: 200% auto;
+
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}

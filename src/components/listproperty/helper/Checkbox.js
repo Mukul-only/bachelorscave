@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { validationActions } from "../../../store/validation-slice";
 import { useEffect, useState } from "react";
 import { propertydataActions } from "../../../store/propertydata-slice";
 

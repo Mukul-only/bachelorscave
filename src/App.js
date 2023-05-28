@@ -8,6 +8,7 @@ import PropertyDetails from "./components/listproperty/PropertyDetails";
 import LocalityDetails from "./components/listproperty/LocalityDetails";
 import RentalDetails from "./components/listproperty/RentalDetails";
 import Amenities from "./components/listproperty/Amenities";
+import Gallery from "./components/listproperty/Gallery";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
           { path: "localitydetails", element: <LocalityDetails /> },
           { path: "rentaldetails", element: <RentalDetails /> },
           { path: "amenities", element: <Amenities /> },
-          { path: "gallery", element: <p>gallery</p> },
+          { path: "gallery", element: <Gallery /> },
           { path: "schedule", element: <p>schedule</p> },
         ],
       },
