@@ -3,7 +3,7 @@ import { validationActions } from "../../../store/validation-slice";
 import { useEffect, useState } from "react";
 import { propertydataActions } from "../../../store/propertydata-slice";
 
-const Checkbox = ({ id, label, className }) => {
+const Checkbox = ({ id, label, className, src }) => {
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
   const checkHandler = (e) => {
@@ -29,7 +29,11 @@ const Checkbox = ({ id, label, className }) => {
   }, [checked, dispatch]);
   return (
     <>
-      <div className={`flex cursor-pointer  ${className ? className : ""}`}>
+      <div
+        className={`flex cursor-pointer items-center  ${
+          className ? className : ""
+        }`}
+      >
         <input
           type="checkbox"
           id={label}
@@ -37,11 +41,13 @@ const Checkbox = ({ id, label, className }) => {
           onChange={checkHandler}
           checked={checked}
         />
+
         <label
-          className="block font-[500] select-none text-sm md:text-base cursor-pointer px-2"
+          className="flex items-center space-x-2 font-[500] select-none text-sm md:text-base cursor-pointer px-2"
           htmlFor={label}
         >
-          {label}
+          {src && <img src={src} className="w-8" />}
+          <p>{label}</p>
         </label>
       </div>
     </>

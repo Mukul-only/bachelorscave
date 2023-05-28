@@ -3,7 +3,7 @@ import classes from "./Select.module.css";
 import React, { useState, useEffect } from "react";
 import { validationActions } from "../../../store/validation-slice";
 import { propertydataActions } from "../../../store/propertydata-slice";
-const Select = ({ id, label, options, className, selected }) => {
+const Select = ({ id, label, options, className, selected, src }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("select");
@@ -58,7 +58,11 @@ const Select = ({ id, label, options, className, selected }) => {
         } text-sm md:text-base`}
         onClick={openDropDownHandler}
       >
-        <p>{value}</p>
+        <div className="flex space-x-4 items-center">
+          {src && <img src={src} className="w-8" />}
+
+          <p>{value}</p>
+        </div>
         <img
           src={require("../../../assets/down-arrow.png")}
           className={`w-3 ${isOpen ? "rotate-180" : ""} duration-300`}
@@ -85,7 +89,9 @@ const Select = ({ id, label, options, className, selected }) => {
         ))}
       </ul>
       {hasError && (
-        <p className="text-red-500 px-2 text-xs md:text-sm">invalid</p>
+        <p className="text-red-500 px-2 text-xs md:text-sm">
+          This feild is required!
+        </p>
       )}
     </div>
   );

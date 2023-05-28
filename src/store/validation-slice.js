@@ -59,6 +59,11 @@ const validationSlice = createSlice({
     setPrev(state, action) {
       state.prev = action.payload;
     },
+    removeFeildValidity(state, action) {
+      state.feildValidity = state.feildValidity.filter(
+        (item) => item.id !== action.payload
+      );
+    },
     reset(state) {
       state.isTouched = false;
       state.isFormValid = false;

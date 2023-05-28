@@ -13,7 +13,6 @@ const ListPropNavLink = (props) => {
       if (props.id > current) {
         e.preventDefault();
       } else {
-        dispatch(validationActions.setSectionValidity(current));
         dispatch(validationActions.reset());
       }
     } else {
@@ -55,7 +54,6 @@ const ListPropertyRoot = (props) => {
   };
   const goToPrevHandler = () => {
     navigate(prev);
-    dispatch(validationActions.setSectionValidity(current));
     dispatch(validationActions.reset());
   };
   return (

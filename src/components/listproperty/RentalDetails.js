@@ -3,9 +3,10 @@ import Select from "./helper/Select";
 import { useEffect, useState } from "react";
 import { validationActions } from "../../store/validation-slice";
 import Input from "./helper/Input";
-import useBuildAreaValidation from "./helper/use-BuildAreaValidation";
+
 import Checkbox from "./helper/Checkbox";
 import Textarea from "./helper/Textarea";
+import { propertydataActions } from "../../store/propertydata-slice";
 
 const RentalDetails = (props) => {
   const dispatch = useDispatch();
@@ -19,6 +20,15 @@ const RentalDetails = (props) => {
     (state) =>
       state.propertydata.propertydata["Rental details"]["Monthly Maintenance"]
   );
+  if (monthlyMaintenance === "Maintenance Included") {
+    dispatch(validationActions.removeFeildValidity("Maintenance Amount"));
+    dispatch(
+      propertydataActions.removePropertyData({
+        id: "Rental details",
+        name: "Maintenance Amount",
+      })
+    );
+  }
   const currentDate = new Date().toJSON().slice(0, 10);
 
   const expectedRentRaw = useSelector(
@@ -145,6 +155,7 @@ const RentalDetails = (props) => {
           className="w-full md:w-1/2  "
           label="Preferred tenants"
           options={["Does't matter", "Bachelors", "Sutdents"]}
+          src={require("../../assets/tenant.png")}
         />
       </div>
       <div className="flex justify-between flex-col md:flex-row xl:space-x-12 md:space-x-6 space-y-2 md:space-y-0 mt-4">
@@ -153,12 +164,14 @@ const RentalDetails = (props) => {
           className="w-full md:w-1/2  "
           label="Furnishing"
           options={["Fully furnished", "Semi-furnished", "Unfurnished"]}
+          src={require("../../assets/cabinet.png")}
         />
         <Select
           id="Rental details"
           className="w-full md:w-1/2  "
           label="Parking"
           options={["Bike", "Car", "Both", "None"]}
+          src={require("../../assets/parking-area.png")}
         />
       </div>
       <Textarea

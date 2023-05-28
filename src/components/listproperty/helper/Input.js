@@ -58,7 +58,7 @@ const Input = ({
           value: value,
         })
       );
-    }, 300);
+    }, 500);
     return () => {
       clearTimeout(identifier);
     };
@@ -73,9 +73,8 @@ const Input = ({
           hasError ? "bg-red-50 border-red-500" : "bg-gray-50"
         }`}
       >
-        {icon && icon.left && (
-          <p className="text-lg md:text-xl  pl-2 xl:pl-4">{icon.left}</p>
-        )}
+        {icon && icon.src && <img src={icon.src} className="w-8  pl-2" />}
+        {icon && icon.left && <p className=" pl-2 xl:pl-4">{icon.left}</p>}
         <input
           className={`flex-1  outline-none  px-2 py-1  md:px-4 md:py-2 ${
             hasError ? "bg-red-50 " : "bg-gray-50"

@@ -16,6 +16,10 @@ const propertydataSlice = createSlice({
       const item = action.payload;
       state.propertydata[item.id][item.name] = item.value;
     },
+    removePropertyData(state, action) {
+      const item = action.payload;
+      delete state.propertydata[item.id][item.name];
+    },
   },
 });
 
