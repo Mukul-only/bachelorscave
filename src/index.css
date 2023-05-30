@@ -61,3 +61,6 @@ h1 {
   color: #fff;
   text-decoration: none;
 }
+.scroll_bar::-webkit-scrollbar {
+  display: none;
+}

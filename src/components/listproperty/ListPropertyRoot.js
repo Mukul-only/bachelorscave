@@ -99,7 +99,7 @@ const ListPropertyRoot = (props) => {
             src={require("../../assets/listprop/schedule.png")}
           />
         </div>
-        <div className="flex-1 rounded-l-3xl md:-ml-4 bg-white p-6 md:p-7 xl:p-10 rounded-r-xl ">
+        <div className="flex-1 w-0 rounded-l-3xl md:-ml-4 bg-white p-6 md:p-7 xl:p-10 rounded-r-xl ">
           <props.Outlet />
         </div>
       </Card>

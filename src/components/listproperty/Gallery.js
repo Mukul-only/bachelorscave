@@ -30,6 +30,8 @@ const Gallery = (props) => {
         src={require("../../assets/photo-camera.png")}
         input={{ type: "file", accept: "image/*" }}
         className="mt-6"
+        count={4}
+        cntEr="You can upload max to 4 photos!"
       />
       <FileInput
         id="Gallery"
@@ -39,6 +41,10 @@ const Gallery = (props) => {
         src={require("../../assets/movie.png")}
         input={{ type: "file", accept: "video/*" }}
         className="mt-6"
+        count={2}
+        size={20000000}
+        cntEr="You can upload max to 2 videos!"
+        sizeEr="Max file size exceeded! (20Mb)"
       />
     </>
   );
