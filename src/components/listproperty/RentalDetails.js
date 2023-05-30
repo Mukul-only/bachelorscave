@@ -154,7 +154,7 @@ const RentalDetails = (props) => {
           id="Rental details"
           className="w-full md:w-1/2  "
           label="Preferred tenants"
-          options={["Does't matter", "Bachelors", "Sutdents"]}
+          options={["Does't matter", "Bachelors", "Students"]}
           src={require("../../assets/tenant.png")}
         />
       </div>
