@@ -1,8 +1,6 @@
 import { useDispatch } from "react-redux";
-import Select from "./helper/Select";
 import { useEffect } from "react";
 import { validationActions } from "../../store/validation-slice";
-import Input from "./helper/Input";
 import FileInput from "./helper/FileInput";
 
 const Gallery = (props) => {

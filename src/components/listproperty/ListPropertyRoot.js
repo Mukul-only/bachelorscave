@@ -4,6 +4,9 @@ import classes from "./Styels.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../UI/Button";
 import { validationActions } from "../../store/validation-slice";
+import { useEffect, useState } from "react";
+import { propertydataActions } from "../../store/propertydata-slice";
+import Loader from "./Loader";
 const ListPropNavLink = (props) => {
   const { isFormValid, current } = useSelector((state) => state.validation);
   const dispatch = useDispatch();
@@ -17,6 +20,7 @@ const ListPropNavLink = (props) => {
       }
     } else {
       dispatch(validationActions.setSectionValidity(current));
+
       dispatch(validationActions.reset());
     }
   };
@@ -40,24 +44,35 @@ const ListPropNavLink = (props) => {
 
 const ListPropertyRoot = (props) => {
   const dispatch = useDispatch();
-  const { isFormValid, current, next, prev } = useSelector(
-    (state) => state.validation
-  );
+  const { isListpropertyValid, isFormValid, current, next, prev, isTouched } =
+    useSelector((state) => state.validation);
   const navigate = useNavigate();
+  const hasError = isTouched && current === 5 && !isListpropertyValid;
   const goToNextHandler = () => {
     dispatch(validationActions.setIsTouched());
-    if (isFormValid) {
+    if (isFormValid && current !== 5) {
       navigate(next);
       dispatch(validationActions.setSectionValidity(current));
       dispatch(validationActions.reset());
+    } else if (isFormValid && current === 5 && isListpropertyValid) {
+      alert("success");
     }
   };
   const goToPrevHandler = () => {
     navigate(prev);
+
     dispatch(validationActions.reset());
+    if (isFormValid) {
+      dispatch(validationActions.setSectionValidity(current));
+    }
   };
+
   return (
     <>
+      <Card className="flex flex-col md:flex-row py-8 items-center justify-between space-y-6 md:space-y-0">
+        <h1 className="text-3xl md:ml-4 text-darkBlue">List Property</h1>
+        <Loader className=" md:mr-6" />
+      </Card>
       <Card className="flex rounded-xl   shadow-lg  border ">
         <div
           className={`hidden rounded-l-xl md:block py-12 md:px-2 xl:px-4 ${classes.gradeint} text-white`}
@@ -103,7 +118,14 @@ const ListPropertyRoot = (props) => {
           <props.Outlet />
         </div>
       </Card>
-      <div className="mx-auto w-max space-x-4 text-sm md:text-base">
+      {hasError && (
+        <Card className="mt-4">
+          <p className="text-red-500 px-2 text-xs md:text-sm mt-2 ">
+            You have missed some section please complete them!
+          </p>
+        </Card>
+      )}
+      <div className="mx-auto w-max py-12 space-x-4 text-sm md:text-base">
         {current !== 0 && (
           <Button
             className="w-32 py-2 md:py-3 hover:bg-deepBlue hover:text-white duration-300 "
@@ -112,14 +134,13 @@ const ListPropertyRoot = (props) => {
             Back
           </Button>
         )}
-        {current !== 5 && (
-          <Button
-            className=" bg-deepBlue text-white  p-2 md:p-3  my-12 hover:bg-opacity-90"
-            onClick={goToNextHandler}
-          >
-            Save & Continue
-          </Button>
-        )}
+
+        <Button
+          className=" bg-deepBlue text-white  p-2 md:p-3   hover:bg-opacity-90"
+          onClick={goToNextHandler}
+        >
+          {current !== 5 ? "Save & Continue" : "Finish Posting"}
+        </Button>
       </div>
     </>
   );

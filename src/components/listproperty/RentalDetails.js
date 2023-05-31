@@ -20,15 +20,18 @@ const RentalDetails = (props) => {
     (state) =>
       state.propertydata.propertydata["Rental details"]["Monthly Maintenance"]
   );
-  if (monthlyMaintenance === "Maintenance Included") {
-    dispatch(validationActions.removeFeildValidity("Maintenance Amount"));
-    dispatch(
-      propertydataActions.removePropertyData({
-        id: "Rental details",
-        name: "Maintenance Amount",
-      })
-    );
-  }
+  useEffect(() => {
+    if (monthlyMaintenance === "Maintenance Included") {
+      dispatch(validationActions.removeFeildValidity("Maintenance Amount"));
+      dispatch(
+        propertydataActions.removePropertyData({
+          id: "Rental details",
+          name: "Maintenance Amount",
+        })
+      );
+    }
+  }, [monthlyMaintenance]);
+
   const currentDate = new Date().toJSON().slice(0, 10);
 
   const expectedRentRaw = useSelector(

@@ -138,7 +138,13 @@ const FileInput = ({
               className="min-w-[12rem] md:min-w-[16rem] rounded-lg  overflow-hidden border relative "
               key={item.id}
             >
-              <img src={item.src} className="w-full  h-40 object-cover" />
+              <img
+                src={item.src}
+                className="w-full  h-40 object-cover hover:scale-110 duration-300 "
+                onClick={() => {
+                  markClickHandler(item.id);
+                }}
+              />
               <div className="absolute top-0 left-0 right-0 z-40 flex space-x-4 p-3 justify-between ">
                 <span
                   className="relative group"
@@ -154,7 +160,7 @@ const FileInput = ({
                     }
                     className="w-10 h-10 p-2 rounded-full bg-white cursor-pointer"
                   />
-                  <span className="absolute opacity-0 group-hover:opacity-100 left-0 px-2 py-1 rounded-md top-full bg-black text-white bg-opacity-70 text-sm duration-200">
+                  <span className="absolute select-none opacity-0 group-hover:opacity-100 left-0 px-2 py-1 rounded-md top-full bg-black text-white bg-opacity-70 text-sm duration-200">
                     Mark as display image
                   </span>
                 </span>

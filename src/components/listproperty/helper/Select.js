@@ -3,7 +3,7 @@ import classes from "./Select.module.css";
 import React, { useState, useEffect } from "react";
 import { validationActions } from "../../../store/validation-slice";
 import { propertydataActions } from "../../../store/propertydata-slice";
-const Select = ({ id, label, options, className, selected, src }) => {
+const Select = ({ id, label, options, className, selected, src, disabled }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("select");
@@ -45,9 +45,9 @@ const Select = ({ id, label, options, className, selected, src }) => {
   }, [dispatch, value]);
   return (
     <div
-      className={`relative ${className ? className : ""} cursor-pointer ${
-        classes["prevent-select"]
-      }`}
+      className={`relative ${className ? className : ""} ${
+        disabled ? "cursor-not-allowed" : "cursor-pointer"
+      } ${classes["prevent-select"]}`}
       tabIndex={0}
       onBlur={selectBlurHandler}
     >
@@ -56,7 +56,7 @@ const Select = ({ id, label, options, className, selected, src }) => {
         className={`flex space-x-2 justify-between mt-2 items-center px-2 py-1 md:px-4 md:py-2 rounded-lg  border ${
           hasError ? "bg-red-50 border-red-500" : "bg-gray-50"
         } text-sm md:text-base`}
-        onClick={openDropDownHandler}
+        onClick={() => !disabled && openDropDownHandler()}
       >
         <div className="flex space-x-4 items-center">
           {src && <img src={src} className="w-8" />}
@@ -64,8 +64,14 @@ const Select = ({ id, label, options, className, selected, src }) => {
           <p>{value}</p>
         </div>
         <img
-          src={require("../../../assets/down-arrow.png")}
-          className={`w-3 ${isOpen ? "rotate-180" : ""} duration-300`}
+          src={
+            disabled
+              ? require("../../../assets/disabled.png")
+              : require("../../../assets/down-arrow.png")
+          }
+          className={`${disabled ? "w-6" : "w-3"} ${
+            isOpen ? "rotate-180" : ""
+          } duration-300`}
         />
       </div>
       <ul

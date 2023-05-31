@@ -20,6 +20,16 @@ const propertydataSlice = createSlice({
       const item = action.payload;
       delete state.propertydata[item.id][item.name];
     },
+    finalReset(state) {
+      state.propertydata = {
+        "Property details": {},
+        "Locality details": {},
+        "Rental details": {},
+        Amenities: {},
+        Gallery: {},
+        Schedule: {},
+      };
+    },
   },
 });
 

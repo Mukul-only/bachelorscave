@@ -69,6 +69,23 @@ const validationSlice = createSlice({
       state.isFormValid = false;
       state.feildValidity = [];
     },
+    finalReset(state) {
+      state.current = 0;
+      state.next = "/listproperty";
+      state.prev = "/listproperty";
+      state.isTouched = false;
+      state.feildValidity = [];
+      state.isSectionValid = {
+        0: false,
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+      };
+      state.isFormValid = false;
+      state.isListpropertyValid = false;
+    },
   },
 });
 export const validationActions = validationSlice.actions;
