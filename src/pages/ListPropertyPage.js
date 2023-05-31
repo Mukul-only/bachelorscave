@@ -1,5 +1,4 @@
-import Card from "../UI/Card";
-import { Outlet } from "react-router-dom";
+import { Outlet, json, redirect } from "react-router-dom";
 import ListPropertyRoot from "../components/listproperty/ListPropertyRoot";
 const ListPropertyPage = (props) => {
   return (

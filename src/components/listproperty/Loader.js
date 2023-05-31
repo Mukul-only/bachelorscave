@@ -7,7 +7,7 @@ const Loader = ({ className }) => {
 
   useEffect(() => {
     const values = Object.values(isSectionValid);
-    console.log("changed");
+
     let count = 0;
     for (let i = 0; i < values.length; i++) {
       if (values[i]) {

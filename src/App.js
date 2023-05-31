@@ -20,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "listproperty",
         element: <ListPropertyPage />,
+
         children: [
           { index: true, element: <PropertyDetails /> },
           { path: "localitydetails", element: <LocalityDetails /> },

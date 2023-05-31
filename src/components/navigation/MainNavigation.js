@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import MobileMenu from "./MobileMenu";
 export const Brand = (props) => (
-  <div className="flex space-x-2 items-center">
+  <Link className="flex space-x-2 items-center" to="/">
     <img src={brandlogo} alt="brand" className=" w-14 md:w-12" />
     <h1
       className={`text-xl md:text-2xl ${
@@ -17,7 +17,7 @@ export const Brand = (props) => (
     >
       Bachelors Cave
     </h1>
-  </div>
+  </Link>
 );
 
 export const UserBtn = (props) => {

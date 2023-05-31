@@ -14,7 +14,6 @@ const validationSlice = createSlice({
       2: false,
       3: false,
       4: false,
-      5: false,
     },
     isFormValid: false,
     isListpropertyValid: false,
@@ -81,7 +80,6 @@ const validationSlice = createSlice({
         2: false,
         3: false,
         4: false,
-        5: false,
       };
       state.isFormValid = false;
       state.isListpropertyValid = false;

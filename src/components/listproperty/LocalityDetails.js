@@ -244,7 +244,7 @@ const LocalityDetails = (props) => {
         id="Locality details"
         input={{ type: "text", placeholder: "Eg. Evergreen street" }}
         className="w-full md:w-[49%] mt-6"
-        label="Landmark / street"
+        label="Landmark"
         validation={(value) => true}
         errMsg="invalid"
       />
