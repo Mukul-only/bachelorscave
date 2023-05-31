@@ -118,8 +118,8 @@ const ListPropertyRoot = (props) => {
   };
 
   const removeModalHandler = () => {
-    // dispatch(propertydataActions.finalReset());
-    // dispatch(validationActions.finalReset());
+    dispatch(propertydataActions.finalReset());
+    dispatch(validationActions.finalReset());
     setShowModal(false);
     document.body.style.overflow = "auto";
     setTimeout(() => {
