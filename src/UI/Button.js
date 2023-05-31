@@ -6,6 +6,7 @@ const Button = (props) => {
       } border border-darkBlue`}
       type={props.type ? props.type : "button"}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.children}
     </button>

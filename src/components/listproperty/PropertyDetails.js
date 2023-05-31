@@ -43,6 +43,18 @@ const PropertyDetails = (props) => {
         Property details
       </h1>
       <hr className="border-t my-2 border-gray-300" />
+      <Input
+        id="Property details"
+        input={{
+          type: "text",
+
+          placeholder: "Enter your name",
+        }}
+        className="w-full md:w-1/2 mt-6"
+        label="Owner Name"
+        validation={(value) => value.trim().length !== 0}
+        errMsg="This feild is required!"
+      />
       <Select
         id="Property details"
         className="w-full md:w-1/2 mt-6"
