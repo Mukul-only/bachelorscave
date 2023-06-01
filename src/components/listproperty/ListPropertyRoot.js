@@ -56,31 +56,18 @@ const ListPropertyRoot = (props) => {
   const navigate = useNavigate();
   const hasError = isTouched && current === 5 && !isListpropertyValid;
   const goToNextHandler = () => {
-    window.scrollTo(0, 0);
     dispatch(validationActions.setIsTouched());
     if (isFormValid && current !== 5) {
+      window.scrollTo(0, 0);
       navigate(next);
       dispatch(validationActions.setSectionValidity(current));
       dispatch(validationActions.reset());
     } else if (isFormValid && current === 5 && isListpropertyValid) {
       console.log("success");
-      // const data = {
-      //   property: propertydata["Property details"],
-      //   locality: propertydata["Locality details"],
-      //   rental: propertydata["Rental details"],
-      //   amenities: propertydata.Amenities,
-      //   schedule: propertydata.Schedule,
-      // };
-      // console.log(data);
+
       const data = { ...propertydata };
       delete data.Gallery;
       submitForm(JSON.stringify(data));
-      // Object.values(propertydata).forEach((item) => {
-      //   if (item["Add photos"]) {
-      //     console.log(item);
-      //     submitForm(item);
-      //   }
-      // });
     }
   };
   const modalHandler = () => {
