@@ -56,6 +56,7 @@ const ListPropertyRoot = (props) => {
   const navigate = useNavigate();
   const hasError = isTouched && current === 5 && !isListpropertyValid;
   const goToNextHandler = () => {
+    window.scrollTo(0, 0);
     dispatch(validationActions.setIsTouched());
     if (isFormValid && current !== 5) {
       navigate(next);
@@ -109,6 +110,7 @@ const ListPropertyRoot = (props) => {
   };
 
   const goToPrevHandler = () => {
+    window.scrollTo(0, 0);
     navigate(prev);
 
     dispatch(validationActions.reset());

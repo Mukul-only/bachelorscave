@@ -3,16 +3,35 @@ import classes from "./Select.module.css";
 import React, { useState, useEffect } from "react";
 import { validationActions } from "../../../store/validation-slice";
 import { propertydataActions } from "../../../store/propertydata-slice";
-const Select = ({ id, label, options, className, selected, src, disabled }) => {
+const Select = ({
+  id,
+  label,
+  options,
+  className,
+  selected,
+  src,
+  disabled,
+  validation,
+}) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("select");
   const { isTouched } = useSelector((state) => state.validation);
-  const isValid = value !== "select";
+  let exValid = { state: true, errMsg: "" };
+  if (validation) {
+    exValid = validation(value);
+  }
+
+  const isValid =
+    value !== "select" &&
+    (validation ? (exValid ? exValid.state : true) : true);
+
   const hasError = isTouched && !isValid;
+
   const preValue = useSelector(
     (state) => state.propertydata.propertydata[id][label]
   );
+
   useEffect(() => {
     if (preValue) {
       setValue(preValue);
@@ -96,7 +115,11 @@ const Select = ({ id, label, options, className, selected, src, disabled }) => {
       </ul>
       {hasError && (
         <p className="text-red-500 px-2 text-xs md:text-sm">
-          This feild is required!
+          {validation
+            ? exValid.errMsg !== ""
+              ? exValid.errMsg
+              : "This feild is required!"
+            : "This feild is required!"}
         </p>
       )}
     </div>

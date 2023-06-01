@@ -55,17 +55,31 @@ const PropertyDetails = (props) => {
         validation={(value) => value.trim().length !== 0}
         errMsg="This feild is required!"
       />
-      <Select
-        id="Property details"
-        className="w-full md:w-1/2 mt-6"
-        label="Apartement Type"
-        options={[
-          "Apartement",
-          "Independent House/Villa",
-          "Gated community villa",
-        ]}
-      />
-      <div className="flex justify-between flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 mt-4">
+      <div className="flex justify-between flex-col xl:flex-row xl:space-x-12 space-y-2 xl:space-y-0 mt-6">
+        <Select
+          id="Property details"
+          className="md:basis-1/2 "
+          label="Apartement Type"
+          options={[
+            "Apartement",
+            "Independent House/Villa",
+            "Gated community villa",
+          ]}
+        />
+        <Input
+          id="Property details"
+          input={{
+            type: "text",
+
+            placeholder: "Eg. WinterSpring Rental, etc....",
+          }}
+          className="md:basis-1/2"
+          label="Apartement name"
+          validation={(value) => value.trim().length !== 0}
+          errMsg="This feild is required!"
+        />
+      </div>
+      <div className="flex justify-between flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 mt-6">
         <Select
           id="Property details"
           className="basis-1/3"
@@ -103,7 +117,7 @@ const PropertyDetails = (props) => {
           }
         />
       </div>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0  md:space-x-6 mt-4">
+      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0  md:space-x-6 mt-6">
         <Select
           id="Property details"
           className="basis-1/2"

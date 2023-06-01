@@ -34,7 +34,7 @@ const Amenities = (props) => {
           id="Amenities"
           className="basis-1/3"
           label="Balcony"
-          options={["1 ", "2 ", "3 ", "4 ", "5 ", "5+ "]}
+          options={["0", "1 ", "2 ", "3 ", "4 ", "5 ", "5+ "]}
           src={require("../.././assets/balcony.png")}
         />
         <Select
