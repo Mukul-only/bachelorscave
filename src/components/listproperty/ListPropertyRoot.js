@@ -9,15 +9,17 @@ import homeSvg from "../../assets/completedListing.svg";
 import Loader from "./Loader";
 import { propertydataActions } from "../../store/propertydata-slice";
 import Modal from "../../UI/Modal";
-
+import ErrorPopout from "./ErrorPopout";
 const ListPropNavLink = (props) => {
   const { isFormValid, current } = useSelector((state) => state.validation);
+
   const dispatch = useDispatch();
   const navigateClickHandler = (e) => {
     dispatch(validationActions.setIsTouched());
     if (!isFormValid) {
       if (props.id > current) {
         e.preventDefault();
+        props.state((prev) => !prev);
       } else {
         dispatch(validationActions.reset());
       }
@@ -55,6 +57,7 @@ const ListPropertyRoot = (props) => {
   const { propertydata } = useSelector((state) => state.propertydata);
   const navigate = useNavigate();
   const hasError = isTouched && current === 5 && !isListpropertyValid;
+  const [showPopout, setShowPopout] = useState(false);
   const goToNextHandler = () => {
     dispatch(validationActions.setIsTouched());
     if (isFormValid && current !== 5) {
@@ -68,8 +71,11 @@ const ListPropertyRoot = (props) => {
       const data = { ...propertydata };
       delete data.Gallery;
       submitForm(JSON.stringify(data));
+    } else {
+      setShowPopout((prev) => !prev);
     }
   };
+
   const modalHandler = () => {
     setShowModal(true);
     document.body.style.overflow = "hidden";
@@ -117,6 +123,7 @@ const ListPropertyRoot = (props) => {
   };
   return (
     <>
+      <ErrorPopout state={showPopout} />
       <Card className="flex flex-col md:flex-row py-8 items-center justify-between space-y-6 md:space-y-0">
         <h1 className="text-xl  md:text-3xl md:ml-4 text-darkBlue tracking-in-contract ">
           List Property
@@ -132,36 +139,42 @@ const ListPropertyRoot = (props) => {
             to="/listproperty"
             title="Property details"
             src={require("../../assets/listprop/home_.png")}
+            state={setShowPopout}
           />
           <ListPropNavLink
             id={1}
             to="/listproperty/localitydetails"
             title="Locality details"
             src={require("../../assets/listprop/location.png")}
+            state={setShowPopout}
           />
           <ListPropNavLink
             id={2}
             to="/listproperty/rentaldetails"
             title="Rental details"
             src={require("../../assets/listprop/buildings.png")}
+            state={setShowPopout}
           />
           <ListPropNavLink
             id={3}
             to="/listproperty/amenities"
             title="Amenities"
             src={require("../../assets/listprop/amenities.png")}
+            state={setShowPopout}
           />
           <ListPropNavLink
             id={4}
             to="/listproperty/gallery"
             title="Gallery"
             src={require("../../assets/listprop/gallery.png")}
+            state={setShowPopout}
           />
           <ListPropNavLink
             id={5}
             to="/listproperty/schedule"
             title="Schedule"
             src={require("../../assets/listprop/schedule.png")}
+            state={setShowPopout}
           />
         </div>
         <div className="flex-1 w-0 rounded-l-3xl md:-ml-4 bg-white p-6 md:p-7 xl:p-10 rounded-r-xl ">

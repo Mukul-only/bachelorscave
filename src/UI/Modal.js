@@ -14,9 +14,9 @@ const OverlayModal = ({ heading, text, src, btnLabel, showModal, onClick }) => {
       unmountOnExit
       classNames={{
         enter: "",
-        enterActive: "puff-in-center",
+        enterActive: "fade-in-top",
         exit: "",
-        exitActive: "puff-out-center",
+        exitActive: "fade-out-top",
       }}
     >
       <div className="fixed inset-0 flex justify-center items-center z-50">
