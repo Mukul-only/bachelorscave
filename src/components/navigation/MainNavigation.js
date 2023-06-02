@@ -1,15 +1,16 @@
 import NavigationLink from "./NavigationLink";
 import Card from "../../UI/Card";
-import brandlogo from "../../assets/brand/deal.svg";
+
 import Button from "../../UI/Button";
 import Hamburger from "../../UI/Hamburger";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import MobileMenu from "./MobileMenu";
+import brand from "../../assets/brand/Brand _svg.svg";
 export const Brand = (props) => (
   <Link className="flex space-x-2 items-center" to="/">
-    <img src={brandlogo} alt="brand" className=" w-14 md:w-12" />
+    <img src={brand} alt="brand" className=" w-12 md:w-12" />
     <h1
       className={`text-xl md:text-2xl ${
         props.className ? props.className : ""
