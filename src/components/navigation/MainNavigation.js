@@ -1,38 +1,42 @@
-import NavigationLink from "./NavigationLink";
 import Card from "../../UI/Card";
-
+import ReactDOM from "react-dom";
 import Button from "../../UI/Button";
-import Hamburger from "../../UI/Hamburger";
+
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
+
+import BrandIcon from "../../svgComponents/BrandIcon";
+import Hamburger from "../../svgComponents/Hamburger";
+import SearchIcon from "../../svgComponents/SearchIcon";
 import MobileMenu from "./MobileMenu";
-import brand from "../../assets/brand/Brand _svg.svg";
-export const Brand = (props) => (
-  <Link className="flex space-x-2 items-center" to="/">
-    <img src={brand} alt="brand" className=" w-12 md:w-12" />
-    <h1
-      className={`text-xl md:text-2xl ${
-        props.className ? props.className : ""
-      }`}
-    >
-      Bachelors Cave
-    </h1>
-  </Link>
-);
+export const Icon = (props) => {
+  return (
+    <span className={`block relative  ${props.className}`}>
+      <BrandIcon className="w-full h-full" />
+    </span>
+  );
+};
+export const Brand = (props) => {
+  return (
+    <Link className="flex space-x-2 items-center " to="/">
+      <Icon className="xl:h-10 xl:w-10 h-8 w-8" />
+      <h1
+        className={`text-xl md:text-2xl ${
+          props.className ? props.className : ""
+        }`}
+      >
+        Bachelors Cave
+      </h1>
+    </Link>
+  );
+};
 
 export const UserBtn = (props) => {
   return (
-    <div
-      className={` items-center space-x-3 ${
-        props.className ? props.className : ""
-      }`}
-    >
-      <Button className="w-28 py-2 hover:bg-darkBlue duration-300 hover:text-white font-semibold">
-        Login
-      </Button>
-      <Button className="w-28 py-2 hover:bg-darkBlue duration-300 hover:text-white font-semibold">
-        Signup
+    <div className={` items-center  ${props.className ? props.className : ""}`}>
+      <Button className="w-28 py-1 border border-black text-black hover:bg-black duration-300 hover:text-white font-semibold">
+        Register
       </Button>
     </div>
   );
@@ -40,31 +44,44 @@ export const UserBtn = (props) => {
 
 const MainNavigation = (props) => {
   const dispatch = useDispatch();
+
   const pageChangeHandler = () => {
     dispatch(uiActions.toogle(0));
   };
+  const { mobileNavVisible } = useSelector((state) => state.ui);
+  const overlay = document.querySelector("#overlay");
+  const navOpenHandler = () => {
+    dispatch(uiActions.toogle());
+  };
   return (
     <>
-      <div className="relative z-10 shadow-lg bg-white">
-        <Card className="flex justify-between xl:py-3">
-          <Brand className="hidden md:block" />
-          <div className="xl:flex space-x-6 items-center hidden">
-            <NavigationLink to="/" title="Home" />
-            <NavigationLink to="/help" title="Help" />
-            <NavigationLink to="/aboutus" title="About Us" />
+      <div className={`fixed w-screen top-0 z-20 shadow-lg  bg-white`}>
+        <Card className="flex justify-between py-2 xl:py-2">
+          <div className="flex items-center gap-4">
+            <span
+              className="relative w-6 h-6 xl:hidden cursor-pointer"
+              onClick={navOpenHandler}
+            >
+              <Hamburger className="w-full h-full" />
+            </span>
+            <Brand className="hidden md:block text-black" />
           </div>
-          <div className="flex space-x-2 items-center">
+
+          <div className="flex space-x-2 xl:space-x-6 items-center">
+            <span className="relative w-4 h-4">
+              <SearchIcon className="w-full h-full" />
+            </span>
             <Link to="/listproperty" onClick={pageChangeHandler}>
-              <button className="px-4 text-sm md:text-base rounded-full py-1 h-max text-semibold bg-deepBlue text-white  hover:bg-opacity-90">
+              <button className="px-4 text-sm md:text-base rounded-full tracking-tight py-1 h-max font-semibold text-black ">
                 List property
               </button>
             </Link>
             <UserBtn className="hidden xl:flex" />
-            <Hamburger className="flex xl:hidden cursor-pointer" />
           </div>
         </Card>
       </div>
-      <MobileMenu />
+
+      {ReactDOM.createPortal(<MobileMenu />, overlay)}
     </>
   );
 };

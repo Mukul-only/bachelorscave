@@ -4,7 +4,7 @@ import classes from "./MainFooter.module.css";
 const MainFooter = (props) => {
   return (
     <>
-      <section id="footer" className="bg-deepBlue text-white">
+      <section id="footer" className="bg-Black-600 text-white">
         <Card
           className={`flex flex-col md:flex-row items-center md:items-stretch text-center  md:text-left justify-between md:space-x-4 ${classes.footer}`}
         >

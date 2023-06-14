@@ -8,5 +8,5 @@
   @apply text-lg;
 }
 .footer div:nth-child(3) {
-  @apply px-4 md:bg-[#010B13];
+  @apply px-4 md:bg-[#3c3c3c];
 }

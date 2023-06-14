@@ -84,15 +84,15 @@ const ListPropertyRoot = (props) => {
     try {
       setIsSubmitting(true);
       setError(null);
-      const resopnse = await fetch(
+      const response = await fetch(
         "https://bachelors-cave-26141-default-rtdb.firebaseio.com/propertydata.json",
         {
           method: "POST",
           body: data,
         }
       );
-      if (!resopnse.ok) {
-        throw new Error(`Error code :${resopnse.status}`);
+      if (!response.ok) {
+        throw new Error(`Error code :${response.status}`);
       }
     } catch (error) {
       setError(error.message);

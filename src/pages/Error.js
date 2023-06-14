@@ -8,7 +8,7 @@ const ErrorPage = (props) => {
     <div className="bg-[#e5e8f5] min-h-screen">
       <MainNavigation />
 
-      <Card className="flex flex-col items-center mt-16  space-y-6 text-center pb-32">
+      <Card className="flex flex-col items-center mt-12  space-y-6 text-center pb-32">
         <img
           src={require("../assets/UnderConstruction.png")}
           alt="under construction"
