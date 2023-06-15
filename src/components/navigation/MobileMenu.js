@@ -36,10 +36,12 @@ const MobileMenu = (props) => {
             <Icon className="w-10 h-10" />
           </Link>
           <span
-            className="block relative w-7 h-7 cursor-pointer"
+            className="flex items-end justify-end w-16 h-16"
             onClick={navCloseHandler}
           >
-            <BackIcon className="w-full h-full" />
+            <span className="block relative w-7 h-7 cursor-pointer">
+              <BackIcon className="w-full h-full" />
+            </span>
           </span>
         </div>
         <div className="flex flex-col px-6 mr-4">

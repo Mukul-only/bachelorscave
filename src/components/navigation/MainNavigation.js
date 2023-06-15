@@ -68,7 +68,7 @@ const MainNavigation = (props) => {
           </div>
 
           <div className="flex space-x-2 xl:space-x-6 items-center">
-            <span className="relative w-4 h-4">
+            <span className="relative w-10 h-5 flex ">
               <SearchIcon className="w-full h-full" />
             </span>
             <Link to="/listproperty" onClick={pageChangeHandler}>
