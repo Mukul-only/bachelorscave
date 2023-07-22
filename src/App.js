@@ -11,6 +11,7 @@ import Amenities from "./components/listproperty/Amenities";
 import Gallery from "./components/listproperty/Gallery";
 import Schedule from "./components/listproperty/Schedule";
 import Card from "./UI/Card";
+import SearchPage from "./pages/SearchPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ":location/:type",
-            element: <Card className="my-16">teri maa ki chut</Card>,
+            element: <SearchPage />,
           },
         ],
       },

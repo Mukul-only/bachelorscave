@@ -30,8 +30,8 @@ const MobileMenu = (props) => {
         exitActive: "slide-left",
       }}
     >
-      <div className="flex flex-col top-0 bottom-0 left-0  bg-white fixed z-30 shadow-mobile-nav overflow-y-auto">
-        <div className=" flex justify-between h-28  w-full px-8 items-end pb-6 rounded-b-3xl bg-Purple-100 ">
+      <div className="fixed top-0 bottom-0 left-0 z-40 flex flex-col overflow-y-auto bg-white shadow-mobile-nav">
+        <div className="flex items-end justify-between w-full px-8 pb-6  h-28 rounded-b-3xl bg-Purple-100">
           <Link to="/" onClick={navCloseHandler}>
             <Icon className="w-10 h-10" />
           </Link>
@@ -39,7 +39,7 @@ const MobileMenu = (props) => {
             className="flex items-end justify-end w-16 h-16"
             onClick={navCloseHandler}
           >
-            <span className="block relative w-7 h-7 cursor-pointer">
+            <span className="relative block cursor-pointer w-7 h-7">
               <BackIcon className="w-full h-full" />
             </span>
           </span>
@@ -82,7 +82,7 @@ export default MobileMenu;
 
 const Heading = (props) => {
   return (
-    <h1 className="text-base font-normal tracking-tight mt-6 mb-2 text-gray-500">
+    <h1 className="mt-6 mb-2 text-base font-normal tracking-tight text-gray-500">
       {props.children}
     </h1>
   );
@@ -99,7 +99,7 @@ const NavItems = (props) => {
       className={({ isActive }) => (isActive ? "nav-active" : "")}
       onClick={navClickHandler}
     >
-      <div className="flex  space-x-3 items-center my-1 rounded-lg pl-3 pr-2">
+      <div className="flex items-center pl-3 pr-2 my-1 space-x-3 rounded-lg">
         <span className="relative block w-6 h-6">
           <props.svg className="w-full h-full " />
         </span>

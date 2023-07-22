@@ -14,6 +14,7 @@ module.exports = {
         primary: " #5E17EB ",
         "Purple-100": " rgba(94, 23, 235, 0.15)",
         Brown: " #3E3434",
+        stroke: "#D7D7D7",
       },
       maxWidth: {
         "8xl": "86rem",
