@@ -10,6 +10,7 @@ import RentalDetails from "./components/listproperty/RentalDetails";
 import Amenities from "./components/listproperty/Amenities";
 import Gallery from "./components/listproperty/Gallery";
 import Schedule from "./components/listproperty/Schedule";
+import Card from "./UI/Card";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,15 @@ const router = createBrowserRouter([
           { path: "amenities", element: <Amenities /> },
           { path: "gallery", element: <Gallery /> },
           { path: "schedule", element: <Schedule /> },
+        ],
+      },
+      {
+        path: "/search",
+        children: [
+          {
+            path: ":location/:type",
+            element: <Card className="my-16">teri maa ki chut</Card>,
+          },
         ],
       },
     ],

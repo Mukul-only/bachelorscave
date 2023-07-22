@@ -19,8 +19,8 @@ export const Icon = (props) => {
 };
 export const Brand = (props) => {
   return (
-    <Link className="flex space-x-2 items-center " to="/">
-      <Icon className="xl:h-10 xl:w-10 h-8 w-8" />
+    <Link className="flex items-center space-x-2 " to="/">
+      <Icon className="w-8 h-8 xl:h-10 xl:w-10" />
       <h1
         className={`text-xl md:text-2xl ${
           props.className ? props.className : ""
@@ -35,7 +35,7 @@ export const Brand = (props) => {
 export const UserBtn = (props) => {
   return (
     <div className={` items-center  ${props.className ? props.className : ""}`}>
-      <Button className="w-28 py-1 border border-black text-black hover:bg-black duration-300 hover:text-white font-semibold">
+      <Button className="py-1 font-semibold text-black duration-300 border border-black w-28 hover:bg-black hover:text-white">
         Register
       </Button>
     </div>
@@ -55,24 +55,24 @@ const MainNavigation = (props) => {
   };
   return (
     <>
-      <div className={`fixed w-screen top-0 z-20 shadow-lg  bg-white`}>
+      <div className={`sticky left-0 right-0 top-0 z-20 shadow-lg  bg-white`}>
         <Card className="flex justify-between py-2 xl:py-2">
           <div className="flex items-center gap-4">
             <span
-              className="relative w-6 h-6 xl:hidden cursor-pointer"
+              className="relative w-6 h-6 cursor-pointer xl:hidden"
               onClick={navOpenHandler}
             >
               <Hamburger className="w-full h-full" />
             </span>
-            <Brand className="hidden md:block text-black" />
+            <Brand className="hidden text-black md:block" />
           </div>
 
-          <div className="flex space-x-2 xl:space-x-6 items-center">
-            <span className="relative w-10 h-5 flex ">
+          <div className="flex items-center space-x-2 xl:space-x-6">
+            <span className="relative flex w-10 h-5 ">
               <SearchIcon className="w-full h-full" />
             </span>
             <Link to="/listproperty" onClick={pageChangeHandler}>
-              <button className="px-4 text-sm md:text-base rounded-full tracking-tight py-1 h-max font-semibold text-black ">
+              <button className="px-4 py-1 text-sm font-semibold tracking-tight text-black rounded-full md:text-base h-max ">
                 List property
               </button>
             </Link>

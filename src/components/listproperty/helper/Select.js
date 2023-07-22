@@ -3,6 +3,7 @@ import classes from "./Select.module.css";
 import React, { useState, useEffect } from "react";
 import { validationActions } from "../../../store/validation-slice";
 import { propertydataActions } from "../../../store/propertydata-slice";
+import { searchActions } from "../../../store/search-slice";
 const Select = ({
   id,
   label,
@@ -12,11 +13,16 @@ const Select = ({
   src,
   disabled,
   validation,
+  search,
 }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("select");
-  const { isTouched } = useSelector((state) => state.validation);
+  const { isTouched } = useSelector((state) => {
+    if (search) {
+      return state.search;
+    } else return state.validation;
+  });
   let exValid = { state: true, errMsg: "" };
   if (validation) {
     exValid = validation(value);
@@ -28,9 +34,13 @@ const Select = ({
 
   const hasError = isTouched && !isValid;
 
-  const preValue = useSelector(
-    (state) => state.propertydata.propertydata[id][label]
-  );
+  const preValue = useSelector((state) => {
+    if (search) {
+      return state.search.searchData[id];
+    } else {
+      return state.propertydata.propertydata[id][label];
+    }
+  });
 
   useEffect(() => {
     if (preValue) {
@@ -53,14 +63,22 @@ const Select = ({
     setIsOpen(false);
   };
   useEffect(() => {
-    dispatch(
-      validationActions.setFeildValidity({ id: label, isValid: isValid })
-    );
+    if (!search)
+      dispatch(
+        validationActions.setFeildValidity({ id: label, isValid: isValid })
+      );
+    else dispatch(searchActions.setValidity({ id, isValid }));
   }, [dispatch, isValid, label]);
   useEffect(() => {
-    dispatch(
-      propertydataActions.setPropertyData({ id: id, name: label, value: value })
-    );
+    if (!search)
+      dispatch(
+        propertydataActions.setPropertyData({
+          id: id,
+          name: label,
+          value: value,
+        })
+      );
+    else dispatch(searchActions.setSearchData({ id, value }));
   }, [dispatch, value]);
   return (
     <div
@@ -77,7 +95,7 @@ const Select = ({
         } text-sm md:text-base`}
         onClick={() => !disabled && openDropDownHandler()}
       >
-        <div className="flex space-x-4 items-center">
+        <div className="flex items-center space-x-4">
           {src && <img src={src} className="w-8" />}
 
           <p>{value}</p>
@@ -114,12 +132,12 @@ const Select = ({
         ))}
       </ul>
       {hasError && (
-        <p className="text-red-500 px-2 text-xs md:text-sm">
+        <p className="px-2 text-xs text-red-500 md:text-sm">
           {validation
             ? exValid.errMsg !== ""
               ? exValid.errMsg
-              : "This feild is required!"
-            : "This feild is required!"}
+              : "required!"
+            : "required!"}
         </p>
       )}
     </div>
