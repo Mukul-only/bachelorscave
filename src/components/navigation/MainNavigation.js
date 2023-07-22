@@ -55,7 +55,7 @@ const MainNavigation = (props) => {
   };
   return (
     <>
-      <div className={`sticky left-0 right-0 top-0 z-20 shadow-lg  bg-white`}>
+      <div className={`sticky left-0 right-0 top-0 z-40 shadow-lg  bg-white`}>
         <Card className="flex justify-between py-2 xl:py-2">
           <div className="flex items-center gap-4">
             <span
